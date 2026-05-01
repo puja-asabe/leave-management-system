@@ -1,0 +1,136 @@
+<div class="min-h-screen bg-gray-50 py-8 md:py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">Manager Dashboard</h1>
+        <p class="text-gray-500 mt-1">Welcome back, {{ userName }}. Here's your team's leave overview.</p>
+      </div>
+      <button
+        type="button"
+        (click)="logout()"
+        class="btn-secondary flex items-center justify-center gap-2 self-start"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1"/>
+        </svg>
+        Logout
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="flex justify-center py-20">
+      <svg class="animate-spin h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    </div>
+
+    <div *ngIf="error && !loading" class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 mb-6">{{ error }}</div>
+
+    <div *ngIf="stats && !loading">
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="card border-l-4 border-blue-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 font-medium">Total Requests</p>
+              <p class="text-3xl font-bold text-gray-900 mt-1">{{ stats.totalRequests }}</p>
+            </div>
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-l-4 border-yellow-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 font-medium">Pending</p>
+              <p class="text-3xl font-bold text-yellow-600 mt-1">{{ stats.totalPending }}</p>
+            </div>
+            <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="(stats.totalPending || 0) > 0" class="text-xs text-yellow-600 mt-2 font-medium">⚠ Needs your attention</p>
+        </div>
+
+        <div class="card border-l-4 border-green-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 font-medium">Approved</p>
+              <p class="text-3xl font-bold text-green-600 mt-1">{{ stats.totalApproved }}</p>
+            </div>
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-l-4 border-red-500">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 font-medium">Rejected</p>
+              <p class="text-3xl font-bold text-red-600 mt-1">{{ stats.totalRejected }}</p>
+            </div>
+            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Rate -->
+      <div class="card mb-8">
+        <h3 class="text-sm font-semibold text-gray-700 mb-3">Approval Rate</h3>
+        <div class="flex items-center gap-4">
+          <div class="flex-1 bg-gray-200 rounded-full h-3">
+            <div class="bg-green-500 h-3 rounded-full transition-all duration-500"
+              [style.width]="getApprovalRate() + '%'"></div>
+          </div>
+          <span class="text-sm font-semibold text-gray-700 w-12 text-right">{{ getApprovalRate() }}%</span>
+        </div>
+        <p class="text-xs text-gray-400 mt-2">{{ stats.totalApproved }} approved out of {{ stats.totalRequests }} total requests</p>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
+        <div class="flex flex-wrap gap-3">
+          <a routerLink="/manager/apply-leave" class="btn-secondary flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Apply Leave
+          </a>
+          <a routerLink="/manager/my-leaves" class="btn-secondary flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+            My Leaves
+          </a>
+          <a routerLink="/manager/leave-balance" class="btn-secondary flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+            Leave Balance
+          </a>
+          <a routerLink="/manager/team-leaves" class="btn-primary flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Manage Team Leaves
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

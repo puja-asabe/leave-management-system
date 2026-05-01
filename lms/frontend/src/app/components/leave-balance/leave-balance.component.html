@@ -1,0 +1,108 @@
+<div class="min-h-screen bg-gray-50 py-8 md:py-10">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold text-gray-900">Leave Balance</h1>
+      <p class="text-gray-500 mt-1">Your leave quota and usage for the current year</p>
+    </div>
+
+    <div *ngIf="loading" class="flex justify-center py-20">
+      <svg class="animate-spin h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    </div>
+    <div *ngIf="error && !loading" class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 mb-6">{{ error }}</div>
+
+    <div *ngIf="stats && !loading">
+      <!-- Profile Card -->
+      <div class="card mb-6 flex items-center gap-4">
+        <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+          {{ userName.charAt(0).toUpperCase() }}
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900 text-lg">{{ userName }}</p>
+          <p class="text-sm text-gray-500">{{ department }} Department</p>
+        </div>
+      </div>
+
+      <!-- Overall Balance -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="card text-center border-t-4 border-blue-500">
+          <p class="text-3xl font-bold text-blue-600">{{ stats.totalLeaves }}</p>
+          <p class="text-sm text-gray-500 mt-1">Total</p>
+        </div>
+        <div class="card text-center border-t-4 border-orange-500">
+          <p class="text-3xl font-bold text-orange-500">{{ stats.usedLeaves }}</p>
+          <p class="text-sm text-gray-500 mt-1">Used</p>
+        </div>
+        <div class="card text-center border-t-4 border-green-500">
+          <p class="text-3xl font-bold text-green-600">{{ stats.remainingLeaves }}</p>
+          <p class="text-sm text-gray-500 mt-1">Remaining</p>
+        </div>
+      </div>
+
+      <!-- Overall Usage Bar -->
+      <div class="card mb-6">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-gray-800">Overall Usage</h3>
+          <span class="text-sm font-medium text-gray-600">{{ getPercent(stats.usedLeaves, stats.totalLeaves) }}%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div class="h-4 rounded-full transition-all duration-700"
+            [class]="getPercent(stats.usedLeaves, stats.totalLeaves) > 75 ? 'bg-red-500' :
+                     getPercent(stats.usedLeaves, stats.totalLeaves) > 50 ? 'bg-orange-400' : 'bg-blue-500'"
+            [style.width]="getPercent(stats.usedLeaves, stats.totalLeaves) + '%'">
+          </div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-400 mt-1">
+          <span>0 days</span>
+          <span>{{ stats.totalLeaves }} days</span>
+        </div>
+      </div>
+
+      <!-- Leave Type Breakdown -->
+      <div class="card mb-6">
+        <h3 class="font-semibold text-gray-800 mb-4">Leave Type Allocation</h3>
+        <div class="space-y-4">
+          <div *ngFor="let type of leaveTypes">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">{{ type.name }}</span>
+              <span class="text-sm text-gray-500">{{ type.allocated }} days</span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-full h-2">
+              <div class="h-2 rounded-full"
+                [class]="'bg-' + type.color + '-500'"
+                [style.width]="'100%'"></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-400 mt-3">* Type breakdown is indicative. Actual deduction is from total balance.</p>
+      </div>
+
+      <!-- Request Summary -->
+      <div class="card">
+        <h3 class="font-semibold text-gray-800 mb-4">Request Summary</h3>
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-2xl font-bold text-yellow-500">{{ stats.pendingRequests }}</p>
+            <p class="text-xs text-gray-500 mt-1">Pending</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-green-600">{{ stats.approvedRequests }}</p>
+            <p class="text-xs text-gray-500 mt-1">Approved</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-red-500">{{ stats.rejectedRequests }}</p>
+            <p class="text-xs text-gray-500 mt-1">Rejected</p>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 flex gap-3">
+          <a [routerLink]="applyLeaveRoute" class="btn-primary flex-1 text-center text-sm">Apply Leave</a>
+          <a [routerLink]="myLeavesRoute" class="btn-secondary flex-1 text-center text-sm">View History</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
