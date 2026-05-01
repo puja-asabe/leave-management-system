@@ -1,0 +1,216 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.lms:leave-management-system >-------------------
+[INFO] Building Leave Management System 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.0:run (default-cli) > test-compile @ leave-management-system >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ leave-management-system ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ leave-management-system ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ leave-management-system ---
+[INFO] skip non existing resourceDirectory C:\Users\admin\Desktop\lms-complete (3)\lms\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ leave-management-system ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.2.0:run (default-cli) < test-compile @ leave-management-system <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.0:run (default-cli) @ leave-management-system ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-04-25T11:48:53.496+05:30  INFO 1704 --- [leave-management-system] [           main] c.lms.LeaveManagementSystemApplication   : Starting LeaveManagementSystemApplication using Java 17.0.12 with PID 1704 (C:\Users\admin\Desktop\lms-complete (3)\lms\backend\target\classes started by admin in C:\Users\admin\Desktop\lms-complete (3)\lms\backend)
+2026-04-25T11:48:53.512+05:30 DEBUG 1704 --- [leave-management-system] [           main] c.lms.LeaveManagementSystemApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-04-25T11:48:53.520+05:30  INFO 1704 --- [leave-management-system] [           main] c.lms.LeaveManagementSystemApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-25T11:48:57.264+05:30  INFO 1704 --- [leave-management-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-25T11:48:57.589+05:30  INFO 1704 --- [leave-management-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 274 ms. Found 2 JPA repository interfaces.
+2026-04-25T11:49:00.234+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-25T11:49:00.288+05:30  INFO 1704 --- [leave-management-system] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-25T11:49:00.289+05:30  INFO 1704 --- [leave-management-system] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-04-25T11:49:00.571+05:30  INFO 1704 --- [leave-management-system] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-25T11:49:00.586+05:30  INFO 1704 --- [leave-management-system] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6865 ms
+2026-04-25T11:49:00.735+05:30  INFO 1704 --- [leave-management-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-25T11:49:01.648+05:30  INFO 1704 --- [leave-management-system] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/leave-management-db user=SA
+2026-04-25T11:49:01.656+05:30  INFO 1704 --- [leave-management-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-25T11:49:01.704+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/leave-management-db'
+2026-04-25T11:49:02.126+05:30  INFO 1704 --- [leave-management-system] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-25T11:49:02.299+05:30  INFO 1704 --- [leave-management-system] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-04-25T11:49:02.485+05:30  INFO 1704 --- [leave-management-system] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-25T11:49:03.469+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-25T11:49:03.691+05:30  WARN 1704 --- [leave-management-system] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-25T11:49:07.376+05:30  INFO 1704 --- [leave-management-system] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    create table leave_requests (
+        id bigint generated by default as identity,
+        created_at timestamp(6),
+        end_date date not null,
+        leave_type varchar(255) not null check (leave_type in ('CASUAL','SICK','ANNUAL','MATERNITY','PATERNITY','EMERGENCY','UNPAID')),
+        reason varchar(500) not null,
+        rejection_reason varchar(255),
+        start_date date not null,
+        status varchar(255) not null check (status in ('PENDING','APPROVED','REJECTED')),
+        updated_at timestamp(6),
+        employee_id bigint not null,
+        reviewed_by bigint,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        id bigint generated by default as identity,
+        contact_number varchar(255) not null,
+        department varchar(255) not null,
+        email varchar(255) not null,
+        name varchar(255) not null,
+        password varchar(255) not null,
+        role varchar(255) not null check (role in ('EMPLOYEE','MANAGER','HR')),
+        total_leaves integer,
+        used_leaves integer,
+        primary key (id)
+    )
+Hibernate: 
+    alter table if exists users 
+       drop constraint if exists UK_n14mnjfh0j5psw8omlegp1d68
+Hibernate: 
+    alter table if exists users 
+       add constraint UK_n14mnjfh0j5psw8omlegp1d68 unique (contact_number)
+Hibernate: 
+    alter table if exists users 
+       drop constraint if exists UK_6dotkott2kjsp8vw4d0m25fb7
+Hibernate: 
+    alter table if exists users 
+       add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+Hibernate: 
+    alter table if exists leave_requests 
+       add constraint FKsqls5en3a5v8l9md81umuu87c 
+       foreign key (employee_id) 
+       references users
+Hibernate: 
+    alter table if exists leave_requests 
+       add constraint FKm6br6lc65loui2q8s547hqyv7 
+       foreign key (reviewed_by) 
+       references users
+2026-04-25T11:49:07.704+05:30  INFO 1704 --- [leave-management-system] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-25T11:49:10.139+05:30 DEBUG 1704 --- [leave-management-system] [           main] c.lms.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-04-25T11:49:10.573+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-25T11:49:14.225+05:30  WARN 1704 --- [leave-management-system] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-25T11:49:20.065+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f75c627, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1631a614, org.springframework.security.web.context.SecurityContextHolderFilter@7296675e, org.springframework.security.web.header.HeaderWriterFilter@63b0aeb1, org.springframework.web.filter.CorsFilter@892f1fa, org.springframework.security.web.authentication.logout.LogoutFilter@5ec75178, com.lms.security.JwtAuthenticationFilter@7ee9920a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57be0d93, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e02988, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68f1e261, org.springframework.security.web.session.SessionManagementFilter@78fcc4ef, org.springframework.security.web.access.ExceptionTranslationFilter@2197990b, org.springframework.security.web.access.intercept.AuthorizationFilter@38fc2c39]
+2026-04-25T11:49:22.098+05:30  INFO 1704 --- [leave-management-system] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-04-25T11:49:22.135+05:30  INFO 1704 --- [leave-management-system] [           main] c.lms.LeaveManagementSystemApplication   : Started LeaveManagementSystemApplication in 30.252 seconds (process running for 31.807)
+Hibernate: 
+    select
+        count(*) 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (contact_number, department, email, name, password, role, total_leaves, used_leaves, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (contact_number, department, email, name, password, role, total_leaves, used_leaves, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (contact_number, department, email, name, password, role, total_leaves, used_leaves, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (contact_number, department, email, name, password, role, total_leaves, used_leaves, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        leave_requests
+        (created_at, employee_id, end_date, leave_type, reason, rejection_reason, reviewed_by, start_date, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+? Sample data seeded successfully!
+? Manager: manager@lms.com / password123
+? Employee 1: john@lms.com / password123
+? Employee 2: emily@lms.com / password123
+? Employee 3: michael@lms.com / password123
+2026-04-25T11:49:34.555+05:30  INFO 1704 --- [leave-management-system] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-25T11:49:34.558+05:30  INFO 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-25T11:49:34.568+05:30  INFO 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2026-04-25T11:49:34.603+05:30 DEBUG 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2026-04-25T11:49:34.703+05:30 DEBUG 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-04-25T11:49:34.735+05:30  WARN 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/login' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-04-25T11:49:34.826+05:30 DEBUG 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.contact_number,
+        u1_0.department,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.total_leaves,
+        u1_0.used_leaves 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-25T11:49:39.447+05:30 DEBUG 1704 --- [leave-management-system] [nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
